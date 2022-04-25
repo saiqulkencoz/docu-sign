@@ -17,6 +17,10 @@ class CreateUploadpdfsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('pdf');
+            $table->string('signed_id');
+            $table->string('status');
+            $table->string('note')->nullable();
+            $table->string('instansi_id');
             $table->timestamps();
         });
     }

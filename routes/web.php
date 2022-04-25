@@ -20,6 +20,10 @@ Route::get('/login','AuthController@login')->name('login');
 Route::post('/postlogin','AuthController@postlogin')->name('postlogin');
 Route::get('/logout','AuthController@logout')->name('logout');
 
+// Route::get('test', function(){
+//     return Http::withBasicAuth('test','qwerty')->get('http://103.211.82.20/api/sign/download/80aa89652ada4e6cbec8645b0b3ac45f');        
+// });
+
 
 //superadmin
 Route::get('/super/instansi','SuperadminController@instansi_index')->name('super-instansi');

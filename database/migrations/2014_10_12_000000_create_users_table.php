@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nip');
             $table->string('role');
             $table->string('password');
-            $table->string('instansi_id');
+            $table->string('instansi_id')->nullable();
             $table->timestamps();
         });
     }

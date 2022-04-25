@@ -34,6 +34,8 @@
                                                         <th>No.</th>
                                                         <th>Nama Dokumen</th>
                                                         <th>Dokumen</th>
+                                                        <th>Status</th>
+                                                        <th>Note</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -45,6 +47,8 @@
                                                             <td>
                                                                 <a href="{{asset('pdf/'. $datapdf->pdf)}}" target="_blank">Lihat Dokumen</a>
                                                             </td>
+                                                            <td>{{ $datapdf->status }}</td>
+                                                            <td>Lihat Catatan</td>
                                                             <td>
                                                                 <div style="text-align:center">
                                                                     <a href="user/deletepdf/{{ $datapdf->id }}"

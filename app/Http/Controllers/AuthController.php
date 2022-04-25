@@ -15,6 +15,9 @@ class AuthController extends Controller
             if(Auth()->user()->role=="root"){
                 return redirect('/super/instansi');
             }
+            else if(Auth()->user()->role=="kadis"){
+                return redirect('');
+            }
             else{
                 return redirect('/admin/pengajuan');
             }
