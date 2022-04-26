@@ -11,7 +11,8 @@ class AdminController extends Controller
 {
 
     public function pengajuan(){
-        $pdf = uploadpdf::all();
+        $id = Auth()->user()->instansi_id;
+        $pdf = uploadpdf::all()->where('instansi_id',$id);
         return view ('master_adm.pengajuan_index',['data_pdf' => $pdf]);
     }
 

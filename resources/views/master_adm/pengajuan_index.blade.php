@@ -34,6 +34,7 @@
                                                         <th>No.</th>
                                                         <th>Nama Dokumen</th>
                                                         <th>Dokumen</th>
+                                                        <th>Instansi</th>
                                                         <th>Status</th>
                                                         <th>Note</th>
                                                         <th>Aksi</th>
@@ -45,10 +46,18 @@
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $datapdf->nama }}</td>
                                                             <td>
-                                                                <a href="{{asset('pdf/'. $datapdf->pdf)}}" target="_blank">Lihat Dokumen</a>
+                                                                <a href="{{ asset('pdf/' . $datapdf->pdf) }}"
+                                                                    target="_blank">Lihat Dokumen</a>
                                                             </td>
+                                                            <td>{{ $datapdf->instansi->nama }}</td>
                                                             <td>{{ $datapdf->status }}</td>
-                                                            <td>Lihat Catatan</td>
+                                                            <td>
+                                                                <div style="text-align:center">
+                                                                    <button type="button" class="btn cur-p btn-success"
+                                                                        data-toggle="modal" data-target="#note">Lihat
+                                                                        Catatan</button>
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <div style="text-align:center">
                                                                     <a href="user/deletepdf/{{ $datapdf->id }}"
@@ -85,24 +94,53 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengajuan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('uploadpdf')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('uploadpdf') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <label>Nama Dokumen</label>
                             <input type="text" name="nama" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Upload Dokumen</label><br />
                             <input type="file" name="pdf" accept="application/pdf">
-                        </div>    
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Catatan Dokumen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{-- @if ($data_pdf->note == '')
+                        <p>Tidak ada catatan . . . .</p>
+                    @else
+                        <p>{{ $data_pdf->note }}</p>
+                    @endif --}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                 </div>
             </div>
         </div>

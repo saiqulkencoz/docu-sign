@@ -17,7 +17,7 @@
        </div>
     </div>
     <div class="sidebar_blog_2">
-       <h4>Admin Dashboard</h4>
+       <h4>Admin {{Auth()->user()->instansi->nama}}</h4>
        <ul class="list-unstyled components">
           <li class="active">
              <a href="{{route('adm-pengajuan')}}" aria-expanded="false"><i class="fa fa-file-code-o purple_color2"></i> <span>Input Pengajuan</span></a>
