@@ -29,12 +29,12 @@
                                                 <div class="form-group">
                                                     <label>Nama</label>
                                                     <input type="text" name="nama" placeholder="Masukkan Nama"
-                                                        class="form-control" value="{{$user->nama}}">
+                                                        class="form-control" value="{{$user->nama}}" required autocomplete="off">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>NIP</label>
                                                     <input type="text" name="nip" placeholder="Masukkan NIP"
-                                                        class="form-control" value="{{$user->nip}}">
+                                                        class="form-control" value="{{$user->nip}}" required autocomplete="off">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Role</label>

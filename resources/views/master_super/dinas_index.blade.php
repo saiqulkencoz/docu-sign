@@ -8,6 +8,11 @@
                     <div class="page_title">
                         <h2>Dashboard</h2>
                     </div>
+                    @if (session('Sukses'))
+                        <div class="alert alert-success col-lg-12" role="alert">
+                            {{ session('Sukses') }}
+                        </div>
+                    @endif
                 </div>
             </div>
             <!-- main -->
@@ -43,9 +48,9 @@
                                                             <td>{{ $data->nama }}</td>
                                                             <td>
                                                                 <div style="text-align:center">
-                                                                    <a href="/super/instansi/edit/{{$data->id}}"
+                                                                    <a href="/super/instansi/edit/{{ $data->id }}"
                                                                         class="btn btn-warning btn-sm">EDIT</a>
-                                                                    <a href="/super/instansi/delete/{{$data->id}}"
+                                                                    <a href="/super/instansi/delete/{{ $data->id }}"
                                                                         class="btn btn-danger btn-sm"
                                                                         onclick="return confirm('Anda Yakin ?')">DELETE</a>
                                                                 </div>
@@ -85,11 +90,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('create-instansi')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('create-instansi') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <label>Nama Instansi</label>
                         <div class="form-group">
-                            <input type="text" name="nama" class="form-control">
+                            <input type="text" name="nama" class="form-control" required autocomplete="off">
                         </div>
                 </div>
                 <div class="modal-footer">

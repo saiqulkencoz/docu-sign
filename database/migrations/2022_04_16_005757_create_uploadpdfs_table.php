@@ -16,8 +16,8 @@ class CreateUploadpdfsTable extends Migration
         Schema::create('uploadpdf', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('tanggal');
             $table->string('pdf');
-            $table->string('signed_id');
             $table->string('status');
             $table->string('note')->nullable();
             $table->string('instansi_id');

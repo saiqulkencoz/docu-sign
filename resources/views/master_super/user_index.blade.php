@@ -8,6 +8,11 @@
                     <div class="page_title">
                         <h2>Dashboard</h2>
                     </div>
+                    @if (session('Sukses'))
+                        <div class="alert alert-success col-lg-12" role="alert">
+                            {{ session('Sukses') }}
+                        </div>
+                    @endif
                 </div>
             </div>
             <!-- main -->
@@ -49,9 +54,9 @@
                                                             <td>{{ $data->instansi->nama }}</td>
                                                             <td>
                                                                 <div style="text-align:center">
-                                                                    <a href="/super/user/edit/{{$data->id}}"
+                                                                    <a href="/super/user/edit/{{ $data->id }}"
                                                                         class="btn btn-warning btn-sm">EDIT</a>
-                                                                    <a href="/super/user/delete/{{$data->id}}"
+                                                                    <a href="/super/user/delete/{{ $data->id }}"
                                                                         class="btn btn-danger btn-sm"
                                                                         onclick="return confirm('Anda Yakin ?')">DELETE</a>
                                                                 </div>
@@ -91,26 +96,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('create-user')}}" method="post">
+                    <form action="{{ route('create-user') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control">
+                            <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" required autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>NIP</label>
-                            <input type="text" name="nip" placeholder="Masukkan NIP" class="form-control">
+                            <input type="text" name="nip" placeholder="Masukkan NIP" class="form-control" required autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Role</label>
                             <select class="form-control" name="role">
-                                <option value="admin">Admin</option>
+                                <option value="admin" selected>Admin</option>
                                 <option value="kepala dinas">Kepala Dinas</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Masukkan Password ..." class="form-control">
+                            <input type="password" name="password" placeholder="Masukkan Password ..."
+                                class="form-control" required autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Instansi</label>

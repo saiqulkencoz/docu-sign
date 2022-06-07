@@ -28,7 +28,7 @@
                                                 {{csrf_field()}}
                                                 <div class="form-group">
                                                     <label>Nama Instansi</label>
-                                                    <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Instansi" value="{{$instansi->nama}}">
+                                                    <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Instansi" value="{{$instansi->nama}}" required autocomplete="off">
                                                 </div>
                                                 <button type="submit" class="btn btn-warning btn-lg" style="width: 15%">Update</button>
                                             </form>

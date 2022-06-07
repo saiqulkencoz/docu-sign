@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Instansi;
+use App\uploadpdf;
 use App\User;
 
 class SuperadminController extends Controller
@@ -51,6 +53,7 @@ class SuperadminController extends Controller
         $user -> save();
         return redirect()->back()->with('Sukses','Data Berhasil Diinput');
     }
+    
     public function update_user_index($id){
         $user = User::find($id);
         $instansi = Instansi::all();
@@ -62,5 +65,55 @@ class SuperadminController extends Controller
         $user->update($request->all());
         // dd($request->all());
         return redirect('/super/user')->with('Sukses','Data Berhasil Di Update');
+    }
+    public function statistik(Request $request){
+        $status = ['Menunggu Verifikasi','Memerlukan Revisi','Dokumen Disetujui'];
+        if($request->has('instansi')&&$request->tanggal==''){
+            $now = Carbon::now()->format('F Y');
+            $default = Instansi::find($request->instansi);
+            $setuju = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Dokumen Disetujui')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            $revisi = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Memerlukan Revisi')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            $menunggu = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Menunggu Verifikasi')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            // dd($request-all());
+            $select = Instansi::all();
+            return view ('master_super.statistik',compact('status','setuju','revisi','menunggu','default','select','now'));
+        }
+        else if($request->has('instansi')&&$request->tanggal!=''){
+            $now = $request->tanggal;
+            $default = Instansi::find($request->instansi);
+            $setuju = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Dokumen Disetujui')
+            ->where('tanggal','LIKE','%'.$request->tanggal.'%')->count();
+            $revisi = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Memerlukan Revisi')
+            ->where('tanggal','LIKE','%'.$request->tanggal.'%')->count();
+            $menunggu = uploadpdf::where('instansi_id', '=', $request->instansi)
+            ->where('status', '=', 'Menunggu Verifikasi')
+            ->where('tanggal','LIKE','%'.$request->tanggal.'%')->count();
+            // dd($request-all());
+            $select = Instansi::all();
+            return view ('master_super.statistik',compact('status','setuju','revisi','menunggu','default','select','now'));
+        }
+        else{
+            $now = Carbon::now()->format('F Y');
+            $default = Instansi::first();
+            $setuju = uploadpdf::where('instansi_id', '=', $default->id)
+            ->where('status', '=', 'Dokumen Disetujui')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            $revisi = uploadpdf::where('instansi_id', '=', $default->id)
+            ->where('status', '=', 'Memerlukan Revisi')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            $menunggu = uploadpdf::where('instansi_id', '=', $default->id)
+            ->where('status', '=', 'Menunggu Verifikasi')
+            ->where('tanggal','LIKE','%'.$now.'%')->count();
+            $select = Instansi::all();
+            return view ('master_super.statistik',compact('status','setuju','revisi','menunggu','default','select','now'));
+        }
     }
 }

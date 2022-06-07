@@ -33,6 +33,14 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+        integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="dashboard dashboard_1">
@@ -76,17 +84,7 @@
     <script src="{{ asset('master/js/custom.js') }}"></script>
     <script src="{{ asset('master/js/chart_custom_style1.js') }}"></script>
 
-    <script>
-    $("#visibilitySwitch").click(function(){
-        $(this)
-            .toggleClass('icon-eye-open')
-            .toggleClass('icon-eye-close');
-        if ($('#inputPassword').attr('type') == 'password')
-            $('#inputPassword').attr('type', 'text')
-        else
-            $('#inputPassword').attr('type', 'password')
-    });
-    </script>
+    @yield('footer')
 </body>
 
 </html>

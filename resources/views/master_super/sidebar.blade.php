@@ -20,9 +20,10 @@
        <h4>Admin Dashboard</h4>
        <ul class="list-unstyled components">
           <li class="active">
-             <a href="{{route('super-instansi')}}" aria-expanded="false"><i class="fa fa-home red_color"></i><span>Data Instansi</span></a>
+             <a href="{{route('super-instansi')}}" aria-expanded="false"><i class="fa fa-home orange_color"></i><span>Data Instansi</span></a>
           </li>
           <li><a href="{{route('super-user')}}"><i class="fa fa-user blue2_color"></i> <span>Data User</span></a></li>
+          <li><a href="{{route('super-statistik')}}"><i class="fa fa-area-chart red_color"></i> <span>Statistik</span></a></li>
        </ul>
     </div>
  </nav>

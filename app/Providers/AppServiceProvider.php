@@ -23,6 +23,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Response::macro('attachment', function ($content) {
+
+            $headers = [
+                'Content-type'        => 'aplication/pdf',
+                'Content-Disposition' => 'attachment; filename="download.pdf',
+            ];
+        
+            return \Response::make($content, 200, $headers);
+        
+        });
     }
 }

@@ -52,11 +52,11 @@
                         <fieldset>
                            <div class="field">
                               <label class="label_field">NIP</label>
-                              <input type="text" name="nip" placeholder="Masukkan NIP" />
+                              <input type="text" name="nip" placeholder="Masukkan NIP" required autocomplete="off"/>
                            </div>
                            <div class="field">
                               <label class="label_field">Password</label>
-                              <input type="password" name="password" placeholder="Password" />
+                              <input type="password" name="password" placeholder="Password" required autocomplete="off"/>
                            </div>
                            <div class="field margin_0">
                               <label class="label_field hidden">hidden label</label>

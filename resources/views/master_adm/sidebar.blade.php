@@ -20,9 +20,11 @@
        <h4>Admin {{Auth()->user()->instansi->nama}}</h4>
        <ul class="list-unstyled components">
           <li class="active">
-             <a href="{{route('adm-pengajuan')}}" aria-expanded="false"><i class="fa fa-file-code-o purple_color2"></i> <span>Input Pengajuan</span></a>
+             <a href="{{route('adm-pengajuan')}}" aria-expanded="false"><i class="fa fa-file-pdf-o purple_color2"></i> <span>Input Pengajuan</span></a>
           </li>
-          <li><a href="#"><i class="fa fa-download orange_color"></i> <span>Download Pengajuan</span></a></li>
+          <li><a href="{{route('adm-download')}}"><i class="fa fa-download orange_color"></i> <span>Download Pengajuan</span></a></li>
+          <li><a href="{{route('adm-statistik')}}"><i class="fa fa-area-chart red_color"></i> <span>Statistik</span></a></li>
+          <li><a href="{{route('adm-cek')}}"><i class="fa fa-eye green_color"></i> <span>Cek Dokumen</span></a></li>
        </ul>
     </div>
  </nav>
